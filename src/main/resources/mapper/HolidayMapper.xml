@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jikui.oasys.mapper.HolidayMapper">
+    <insert id="insertHoliday" parameterType="com.jikui.oasys.entity.Holiday">
+        insert into holiday(name, days, timenode)
+        values (#{name}, #{days}, #{timenode})
+    </insert>
+
+    <select id="queryHoliday" parameterType="string" resultType="com.jikui.oasys.entity.Holiday">
+        select * from holiday where name = #{name}
+    </select>
+</mapper>

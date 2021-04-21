@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人工资</title>
+    <link rel="stylesheet" th:href="@{/layuiadmin/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuiadmin/style/admin.css}" media="all">
+    <link rel="stylesheet" th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div class="layui-card-body">
+
+
+            <table id="table" lay-filter="table"></table>
+
+
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/layuiadmin/layui/layui.js}"></script>
+
+<script>
+
+    layui.use(['jquery', 'layer', 'table'], function () {
+        var table = layui.table;
+        var layer = layui.layer;
+        var $ = layui.jquery;
+
+
+        //执行一个 table 实例
+        table.render({
+            elem: '#table',
+            height: 450,
+            url: '/manager/getSalary', //数据接口
+            title: '个人工资',
+            cols: [
+                [ //表头
+                    {type: 'checkbox', fixed: 'left'},
+                    {field: 'id', title: '编号', width: 70},
+                    {field: 'name', title: '姓名', width: 200},
+                    {field: 'min_salary', title: '底薪', width: 200},
+                    {field: 'vacation', title: '请假', width: 200},
+                    {field: 'welfare', title: '五险一金', width: 200},
+                    {field: 'other', title: '其他扣款', width: 200},
+                    {field: 'total_salary', title: '总计', width: 200}
+                ]
+            ],
+            //用于搜索结果重载
+            id: 'sreload'
+        });
+
+    });
+
+
+</script>
+</body>
+</html>
